@@ -1,0 +1,149 @@
+.content {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 5fr;
+  gap: 1rem;
+  width: 100vw;
+  min-height: 100vh;
+}
+a {
+  text-decoration: none !important;
+  color: #333;
+}
+img {
+  width: 100%;
+  height: 100%;
+}
+.navbar {
+  background-color: #6eb800;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  min-height: 100vh;
+  padding: 20px 10px;
+}
+.nav-content a {
+  display: block;
+  margin: 20px 0;
+  color: #fff;
+  position: relative;
+}
+.nav-content a:hover {
+  color: #fff;
+}
+.nav-content a::after {
+  content: "";
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: center left right;
+  transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+}
+.nav-content a:hover::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.nav-content {
+  display: flex;
+  flex-direction: column;
+}
+.display-for-body {
+  min-height: 100vh;
+}
+.facility-body {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.table thead th {
+  text-transform: uppercase;
+  padding: 0.8rem;
+  border-right: 1px solid #333;
+}
+.table thead {
+  background: #6eb800;
+  color: #fff;
+  border: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+.table tbody tr:hover {
+  background: lightgreen;
+}
+.table tbody tr {
+  border: 1px solid #333;
+}
+.table tbody {
+  border-top: 2px solid;
+}
+.table tbody tr td {
+  border-right: 1px solid #333;
+}
+.header-content {
+  border-bottom: 4px solid lightgreen;
+  padding: 20px 10px;
+}
+.facility-info {
+  margin: 0 20px;
+}
+.facility-info h6{
+  font-size: 20px;
+}
+.encounter-img {
+  margin: 30px 0;
+  width: 230px;
+  height: 200px;
+  border: 1px solid;
+}
+.encounter-img img {
+  object-fit: contain;
+}
+@media screen and (max-width: 700px) {
+  .facility-body {
+    grid-template-areas:
+      "facility-info facility-info"
+      "facility-table facility-table";
+  }
+  .facility-info {
+    grid-area: facility-info;
+    width: 100%;
+  }
+  .facility-table {
+    grid-area: facility-table;
+    overflow-x: scroll;
+  }
+  .content {
+    gap: 0;
+  }
+  .header-content {
+    padding: 10px 0;
+  }
+  .facility-info {
+    margin: 0;
+  }
+  .facility-info span {
+    font-size: 15px;
+  }
+  .navbar{
+    height: 100%;
+  }
+  .encounter-img{
+    width: 200px;
+  }
+}
