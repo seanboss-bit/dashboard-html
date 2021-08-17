@@ -59,7 +59,7 @@ img {
 }
 .facility-body {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1.5fr));
   gap: 2rem;
   align-items: center;
   justify-content: space-between;
@@ -101,9 +101,14 @@ img {
 }
 .facility-info {
   margin: 0 20px;
+  align-self: flex-start;
 }
-.facility-info h6{
+.facility-info h6 {
   font-size: 20px;
+}
+.facility-table {
+  border-right: 2px solid lightgreen;
+  padding-right: 30px;
 }
 .encounter-img {
   margin: 30px 0;
@@ -114,19 +119,92 @@ img {
 .encounter-img img {
   object-fit: contain;
 }
-@media screen and (max-width: 700px) {
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-top: 80px;
+}
+.pagination ul {
+  background: #6eb800;
+  display: flex;
+  padding: 8px;
+  border-radius: 50px;
+}
+.pagination ul li {
+  list-style: none;
+  line-height: 45px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.pagination ul li.btn {
+  padding: 0 20px !important;
+}
+.pagination ul li.prev {
+  border-radius: 25px 5px 5px 25px;
+  margin-right: 10px;
+}
+.pagination ul li.next {
+  border-radius: 5px 25px 25px 5px;
+  margin-left: 10px;
+}
+.pagination ul li.dot {
+  font-size: 22px;
+  cursor: default;
+}
+.numb {
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  margin-top: 0 30px;
+}
+.pagination ul li.numb:hover,
+.pagination ul li.active,
+.pagination ul li.btn:hover {
+  transition: 250ms all ease;
+  color: #fff;
+  background-color: lightgreen;
+}
+@media screen and (max-width: 768px) {
   .facility-body {
     grid-template-areas:
       "facility-info facility-info"
       "facility-table facility-table";
   }
+  
   .facility-info {
     grid-area: facility-info;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   .facility-table {
     grid-area: facility-table;
     overflow-x: scroll;
+    border: none;
+    border-top: 2px solid lightgreen;
+    padding-top: 30px;
+    margin-bottom: 100px;
+  }
+  .page {
+    position: fixed;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+  .pagination ul {
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    padding: 8px 30px;
+  }
+  .pagination ul li i{
+    display: none;
   }
   .content {
     gap: 0;
@@ -140,10 +218,15 @@ img {
   .facility-info span {
     font-size: 15px;
   }
-  .navbar{
+  .navbar {
     height: 100%;
   }
-  .encounter-img{
+  .encounter-img {
     width: 200px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .facility-info{
+    align-items: flex-start;
   }
 }
